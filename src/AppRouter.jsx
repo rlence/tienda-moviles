@@ -5,6 +5,7 @@ import Layout from "./layout/layout";
 
 //VIES
 import Home from "./views/home/home";
+import Detail from "./views/detail/detail";
 
 function AppRouter() {
   return (
@@ -12,6 +13,7 @@ function AppRouter() {
         <Layout>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/:id" element={<Detail />} />
             </Routes>
         </Layout>
     </BrowserRouter>
