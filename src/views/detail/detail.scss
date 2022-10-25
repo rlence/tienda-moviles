@@ -1,0 +1,13 @@
+.container-detail{
+    width: 100%;
+    display: flex;
+    padding: 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .container-detail{
+        width: 100%;
+        display: flex;
+        padding: 2rem 1rem;
+    }
+}
