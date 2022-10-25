@@ -1,0 +1,17 @@
+.card{
+    flex: 1 0 16rem;
+    margin: 1.5rem;
+    padding: 1.5rem;
+
+    .content-img{
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 1rem;
+
+        .card-img-top{
+            justify-content: center;
+            width: 10rem;
+        }
+    }
+}
