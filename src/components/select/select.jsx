@@ -25,7 +25,7 @@ function Select({ option, setOption }){
 
     return(
         <select onChange={handelChange} className="form-select" aria-label="Default select example">
-            <option value={defaultOption.code} selected> {defaultOption.name} </option>
+            <option defaultValue={defaultOption.code}> {defaultOption.name} </option>
             {items.map( (item, key) => <option key={key} value={item.code}> {item.name} </option>)}
         </select>
     )

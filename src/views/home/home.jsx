@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { allProduct } from "../../service/cache";
 import Card from "../../components/card/card";
+
+import { HeaderContext } from "../../context/headerContext";
 
 import "./home.scss";
 
 
 function Home(){
+    const {value, setValue} = useContext(HeaderContext);
 
     const [listProducts, setListProducts] = useState([]);
 
@@ -16,7 +19,10 @@ function Home(){
         .catch( err => console.log(err));
     }
 
-    useEffect(() => loadAllProducts(), [])
+    useEffect(() => {
+        setValue({breadcrumbs: ["Products"], cart: value.cart});
+        loadAllProducts();
+    }, [])
 
     const search = ({target}) => {
         const searchValue = target.value.toLowerCase()
