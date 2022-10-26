@@ -3,6 +3,10 @@
 header{
     background-color: $primaryColor;
     border-bottom: 4px solid #F2EFEB;
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 
     .nav{
         width: 100%;
