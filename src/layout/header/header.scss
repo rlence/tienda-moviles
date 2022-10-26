@@ -1,22 +1,60 @@
+@import "../../index.scss";
+
 header{
+    background-color: $primaryColor;
+    border-bottom: 4px solid #F2EFEB;
+
     .nav{
         width: 100%;
         display: flex;
         justify-content: space-between;
         padding: 10px 50px 10px 20px;
 
-        .logo{
-            font-size: 18px;
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-        }
+        .nav-content{
+            display: flex;
 
-        .logo:hover{
-            cursor: pointer;
+            .logo{
+                font-size: 18px;
+                color: $secondaryColor;
+                text-decoration: none;
+            }
+    
+            .logo:hover{
+                cursor: pointer;
+            }
+
+            p{
+                margin: 0 1rem;
+            }
+
+            nav{
+                span{
+                    padding: 0 0.5rem;
+                    color: $tertiaryColor;
+                }
+
+            }
+
+            span:last-child{
+                color: $quaternaryColor;
+                font-weight: bold;
+            }
         }
 
         .icon-shop-car{
-            width: 25px;
+            display: flex;
+            width: 2.5rem;
+
+            span{
+                border-radius: 50px;
+                font-size: 14px;
+                width: 1rem;
+                text-align: center;
+                margin-right: 1px;
+                padding: 2px;
+                background-color: $secondaryColor;
+                color: $primaryColor;
+            }
 
             img{
                 width: 100%;

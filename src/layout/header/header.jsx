@@ -7,15 +7,20 @@ import { HeaderContext } from "../../context/headerContext";
 
 function Header(){
     const {value} = useContext(HeaderContext);
-    console.log(value, "CONTEXT")
 
     return(
         <header className="navbar bg-light">
             <div className="nav">
-                <Link to="/" className="logo">BuyPhone</Link>
-                <nav> {value.breadcrumbs.map( breadcrumb => breadcrumb)} </nav>
+                <div className="nav-content">
+                    <Link to="/" className="logo">BuyPhone</Link>
+                    <p>|</p>
+                    <nav> {value.breadcrumbs.map( breadcrumb => <span key={breadcrumb}>{breadcrumb}</span>)} </nav>
+                </div>
+
                 <div className="icon-shop-car">
-                    <p>{value.cart}</p>
+                    <div>
+                        <span>{value.cart}</span>
+                    </div>
                     <img src={ShopCar} alt="shop car"></img>
                 </div>
             </div>

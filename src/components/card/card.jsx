@@ -11,7 +11,8 @@ function Card({product}){
             <div className="card-body">
                 <h5 className="card-title">{product.brand}</h5>
                 <p className="card-text">{product.model}</p>
-                <p className="card-text">{product.price}</p>
+                {product.price === "" ? null: <p className="card-text price">{product.price}€</p>}
+                
             </div>
         </Link>
     )
