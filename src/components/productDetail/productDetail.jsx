@@ -17,10 +17,14 @@ function ProductDetail({product, addShoppingCart, loadingCart}){
             </div>
             <div className="content-info">
                 <div className="card">
-                    <h2>{product.brand}</h2>
-                    <p>{product.model}</p>
+                    <div className="header-card">
+                        <span>
+                            <h2>{product.brand}</h2>
+                            <p>{product.model}</p>
+                        </span>
+                        <p className="price"><span>{product.price}</span>€</p>
+                    </div>
                     <hr></hr>
-                    <p>price: <span>{product.price}</span>€</p>
                     <p>cpu: <span>{product.cpu}</span></p>
                     <p>ram: <span>{product.ram}</span></p>
                     <p>sistema operativo:<span>{product.os}</span></p>
