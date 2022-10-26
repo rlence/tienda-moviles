@@ -23,9 +23,9 @@ function Select({ option }){
     },[]);
 
     return(
-        <select claclassNamess="form-select" aria-label="Default select example">
+        <select className="form-select" aria-label="Default select example">
             <option value={defaultOption.code} selected> {defaultOption.name} </option>
-            {items.map( item => <option value={item.code}> {item.name} </option>)}
+            {items.map( (item, key) => <option key={key} value={item.code}> {item.name} </option>)}
         </select>
     )
 }

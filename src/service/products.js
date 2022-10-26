@@ -7,6 +7,7 @@ export const getAllProducts = async () => {
         return await res.json()
     }catch(err){
         console.log(err);
+        throw new Error("Error to load de list of products")
     }
 }
 
@@ -17,5 +18,6 @@ export const gatProduct = async (productId) => {
         return await res.json()
     }catch(err){
         console.log(err)
+        throw new Error("Error to load de list of products")
     }
 }

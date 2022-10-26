@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getAllProducts } from "../../service/products";
+import { allProduct } from "../../service/cache";
 import Card from "../../components/card/card";
 
 import "./home.scss";
@@ -11,17 +11,29 @@ function Home(){
     const [listProducts, setListProduts] = useState([]);
 
     const loadAllProducts = () => {
-        getAllProducts()
-        .then(data => setListProduts(data))
-        .catch(err => console.log(err))
+        allProduct()
+        .then(products => setListProduts(products))
+        .catch( err => console.log(err));
     }
 
-    useEffect(loadAllProducts, [])
+    useEffect(() => loadAllProducts(), [])
+
+    const search = ({target}) => {
+        const searchValue = target.value.toLowerCase()
+        const newListProduct = listProducts.filter( product => {
+            const model = product.model.toLowerCase()
+            const brand = product.brand.toLowerCase()
+            if (model.indexOf(searchValue) >= 0 || brand.indexOf(searchValue) >= 0){
+                return product
+            }
+        });
+        searchValue.length === 0 ? loadAllProducts() : setListProduts(newListProduct)
+    }
 
     return(
         <div className="container-home">
             <div className="search">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
+                <input onChange={search} class="form-control" type="search" placeholder="Search" aria-label="Search" />
             </div>
             <div className="products-list">
                 {listProducts.map( product => <Card product={product} /> )}

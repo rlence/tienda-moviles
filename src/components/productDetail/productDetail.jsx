@@ -6,7 +6,7 @@ function ProductDetail({product}){
     return(
         <div className="product-content">
             <div className="content-img">
-                <img src={product.imgUrl}></img>
+                <img src={product.imgUrl} alt="img phone"></img>
             </div>
             <div className="content-info">
                 <div className="card">
@@ -34,7 +34,7 @@ function ProductDetail({product}){
                         <Select option={product.options.storages} />
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary">Añadir al carro</button>
+                <button type="button" className="btn btn-primary">Añadir al carro</button>
             </div>
         </div>
     )
