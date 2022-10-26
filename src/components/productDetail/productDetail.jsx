@@ -1,8 +1,15 @@
 import "./productDetail.scss";
 
 import Select from "../select/select";
+import { useState } from "react";
 
-function ProductDetail({product}){
+import ButtonLoading from "../buttonLoading/buttonLoading";
+
+function ProductDetail({product, addShoppingCart, loadingCart}){
+
+    const [color, setColor] = useState("");
+    const [storage, setStorage] = useState("");
+
     return(
         <div className="product-content">
             <div className="content-img">
@@ -27,14 +34,17 @@ function ProductDetail({product}){
                 <div className="card card-option">
                     <div className="section-card">
                         <p>Colores:</p>
-                        <Select option={product.options.colors} />
+                        <Select option={product.options.colors} setOption={setColor} />
                     </div>
                     <div className="section-card">
                         <p>Almacenamiento:</p>
-                        <Select option={product.options.storages} />
+                        <Select option={product.options.storages} setOption={setStorage} />
                     </div>
                 </div>
-                <button type="button" className="btn btn-primary">Añadir al carro</button>
+                {loadingCart ? 
+                    <ButtonLoading /> : 
+                    <button onClick={() => addShoppingCart({id: product.id, colorCode: color, storageCode: storage })} type="button" className="btn btn-primary">Añadir al carro</button>
+                }
             </div>
         </div>
     )

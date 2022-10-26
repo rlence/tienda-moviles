@@ -21,3 +21,20 @@ export const gatProduct = async (productId) => {
         throw new Error("Error to load de list of products")
     }
 }
+
+export const addProductToShoppingCart = async (product) => {
+    try{
+        const url = `${URL}/cart`;
+        const res = await fetch(url,{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        });
+        return await res.json()
+    }catch(err){
+        console.log(err)
+        throw new Error("Error to save product to the car")
+    }
+}

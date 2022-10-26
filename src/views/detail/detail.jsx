@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { gatProduct } from "../../service/products";
+import { gatProduct, addProductToShoppingCart } from "../../service/products";
 
 import Spinner from "../../components/spinner/spinner";
 import ProductDetail from "../../components/productDetail/productDetail";
 
 import "./detail.scss"
 
-const initalState = {
+const initialState = {
     id: "",
     brand: "",
     model: "",
@@ -33,7 +33,8 @@ function Detail(){
     const [params] = useState(useParams());
 
     const [loading, setLoading] = useState(true);
-    const [product, setProduct] = useState(initalState)
+    const [product, setProduct] = useState(initialState);
+    const [loadingCart, setLoadingCart] = useState(false);
 
     const getInfoProduct = () => {
         gatProduct(params.id)
@@ -46,10 +47,16 @@ function Detail(){
 
     useEffect(getInfoProduct,[])
 
-    console.log(product)
+    const addShoppingCart = async (productSelected) => {
+        setLoadingCart(true)
+        const cartElements = await addProductToShoppingCart(productSelected);
+        console.log(cartElements)
+        setLoadingCart(false)
+    }
+
     return(
         <section className="container-detail">
-            { loading ? <Spinner /> : <ProductDetail product={product} /> }
+            { loading ? <Spinner /> : <ProductDetail product={product} addShoppingCart={addShoppingCart} loadingCart={loadingCart} /> }
         </section>
     )
 }

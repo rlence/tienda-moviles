@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Select({ option }){
+function Select({ option, setOption }){
 
     const [items, setItems] = useState([])
     const [defaultOption, setDefaultOption] = useState({code: "", name: ""})
@@ -9,21 +9,22 @@ function Select({ option }){
         switch(option.length){
             case 0: 
                 break;
-            case 1:
+            default:
                 setItems(option);
+                setOption(option[0].code)
                 setDefaultOption(option[0]);
                 break;
-            default:
-                const firstValue = option.shift();
-                setItems(option);
-                setDefaultOption(firstValue);
-                break;
         }
-
     },[]);
 
+    const handelChange = ({target}) => {
+        setOption(target.value)
+        const filterItem = items.filter( item => item.code == target.value)[0];
+        setDefaultOption(filterItem)
+    }
+
     return(
-        <select className="form-select" aria-label="Default select example">
+        <select onChange={handelChange} className="form-select" aria-label="Default select example">
             <option value={defaultOption.code} selected> {defaultOption.name} </option>
             {items.map( (item, key) => <option key={key} value={item.code}> {item.name} </option>)}
         </select>

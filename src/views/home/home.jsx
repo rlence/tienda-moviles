@@ -8,11 +8,11 @@ import "./home.scss";
 
 function Home(){
 
-    const [listProducts, setListProduts] = useState([]);
+    const [listProducts, setListProducts] = useState([]);
 
     const loadAllProducts = () => {
         allProduct()
-        .then(products => setListProduts(products))
+        .then(products => setListProducts(products))
         .catch( err => console.log(err));
     }
 
@@ -27,7 +27,11 @@ function Home(){
                 return product
             }
         });
-        searchValue.length === 0 ? loadAllProducts() : setListProduts(newListProduct)
+        searchValue.length === 0 ? loadAllProducts() : setListProducts(newListProduct)
+    }
+
+    const handleClick = (event) => {
+        console.log(event, "en el handle click")
     }
 
     return(
@@ -36,7 +40,7 @@ function Home(){
                 <input onChange={search} class="form-control" type="search" placeholder="Search" aria-label="Search" />
             </div>
             <div className="products-list">
-                {listProducts.map( product => <Card product={product} /> )}
+                {listProducts.map( product => <Card onClick={handleClick}  product={product} /> )}
             </div>
         </div>
     )

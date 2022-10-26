@@ -1,4 +1,4 @@
-import { getAllProducts, gatProduct } from "./products";
+import { getAllProducts } from "./products";
 
 const KEY = "products"
 const HOUR = 3600 * 1000;
