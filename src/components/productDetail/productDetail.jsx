@@ -9,7 +9,7 @@ function ProductDetail({product}){
                 <img src={product.imgUrl}></img>
             </div>
             <div className="content-info">
-               <div className="card">
+                <div className="card">
                     <h2>{product.brand}</h2>
                     <p>{product.model}</p>
                     <hr></hr>
@@ -23,18 +23,18 @@ function ProductDetail({product}){
                     <p>camara trasera: <span>{product.secondaryCmera}</span></p>
                     <p>dimenciones: <span>{product.dimentions}</span></p>
                     <p>peso: <span>{product.weight}g</span></p>
-               </div>
-               <div className="card">
-                <div className="section-card">
-                    <p>Colores:</p>
-                    <Select option={product.options.colors} />
                 </div>
-                <div className="section-card">
-                    <p>Almacenamiento:</p>
-                    <Select option={product.options.storages} />
+                <div className="card card-option">
+                    <div className="section-card">
+                        <p>Colores:</p>
+                        <Select option={product.options.colors} />
+                    </div>
+                    <div className="section-card">
+                        <p>Almacenamiento:</p>
+                        <Select option={product.options.storages} />
+                    </div>
                 </div>
-                
-                </div>
+                <button type="button" class="btn btn-primary">Añadir al carro</button>
             </div>
         </div>
     )
